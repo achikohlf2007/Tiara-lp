@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiara｜フェムケア・ダイエット相談室</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@300;400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark-brown: #2B1F18;
+    --mid-brown: #4A3428;
+    --warm-brown: #6B4A38;
+    --beige: #E8DDD4;
+    --light-beige: #F5F0EB;
+    --cream: #FBF8F5;
+    --accent: #C4956A;
+    --soft-red: #B85C4A;
+    --text-dark: #1C1410;
+    --text-mid: #7A6558;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--text-dark);
+    font-family: 'Noto Serif JP', serif;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 45% 55%;
+  }
+
+  /* 左：ダークブラウン */
+  .hero-left {
+    background: var(--dark-brown);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 56px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+
+  .brand-en {
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 10px;
+    letter-spacing: 0.6em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(64px, 8vw, 100px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--beige);
+    line-height: 1.0;
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero-title-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.4em;
+    color: var(--accent);
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-concept {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: #8A7060;
+    line-height: 2.4;
+    max-width: 260px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .hero-score {
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid #3D2E24;
+    display: flex;
+    gap: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.0s forwards;
+  }
+
+  .score-item {}
+
+  .score-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--beige);
+    display: block;
+    line-height: 1;
+  }
+
+  .score-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* 右：ライト */
+  .hero-right {
+    background: var(--light-beige);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 80px 56px;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* 縦書きサイドテキスト */
+  .side-text {
+    position: absolute;
+    top: 80px;
+    right: 40px;
+    writing-mode: vertical-rl;
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--text-mid);
+    opacity: 0.5;
+    text-transform: uppercase;
+  }
+
+  /* 大きな装飾文字 */
+  .hero-deco {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(120px, 18vw, 220px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--beige);
+    opacity: 0.5;
+    pointer-events: none;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .hero-right-bottom {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .hero-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 6px 16px;
+    border: 1px solid var(--warm-brown);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--warm-brown);
+    letter-spacing: 0.1em;
+  }
+
+  .cta-area {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 16px 40px;
+    background: var(--dark-brown);
+    color: var(--beige);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+    cursor: pointer;
+  }
+
+  .cta-btn:hover {
+    background: var(--mid-brown);
+    transform: translateY(-2px);
+  }
+
+  .cta-note {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--text-mid);
+    letter-spacing: 0.2em;
+  }
+
+  /* ─── ABOUT ─── */
+  .about {
+    padding: 140px 0;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about::after {
+    content: 'FEMCARE';
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 140px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--beige);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .section-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 56px;
+  }
+
+  .section-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 9px;
+    letter-spacing: 0.6em;
+    color: var(--warm-brown);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--warm-brown);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-dark);
+    line-height: 1.35;
+    margin-bottom: 32px;
+  }
+
+  .about-body {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-mid);
+    line-height: 2.5;
+  }
+
+  /* 視覚ブロック */
+  .visual-block {
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    gap: 6px;
+    height: 420px;
+  }
+
+  .vb-main {
+    background: var(--mid-brown);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vb-main::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, var(--accent) 0%, transparent 50%);
+    opacity: 0.2;
+  }
+
+  .vb-main-label {
+    position: absolute;
+    bottom: 20px;
+    left: 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--beige);
+    opacity: 0.8;
+    z-index: 2;
+  }
+
+  .vb-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .vb-sub1 { background: var(--beige); }
+  .vb-sub2 { background: var(--accent); opacity: 0.6; }
+
+  /* ─── MENU ─── */
+  .menu-section {
+    padding: 140px 0;
+    background: var(--dark-brown);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .menu-section .section-eyebrow {
+    color: var(--accent);
+  }
+
+  .menu-section .section-eyebrow::before {
+    background: var(--accent);
+  }
+
+  .menu-list {
+    margin-top: 48px;
+    display: grid;
+    gap: 3px;
+  }
+
+  .menu-item {
+    background: var(--mid-brown);
+    padding: 40px 48px;
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: center;
+    gap: 40px;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .menu-item:hover {
+    background: #5C3D2E;
+  }
+
+  .menu-item-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--accent);
+    opacity: 0.5;
+  }
+
+  .menu-item-info {}
+
+  .menu-item-name {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--beige);
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+  }
+
+  .menu-item-desc {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: #8A7060;
+    line-height: 1.9;
+  }
+
+  .menu-item-arrow {
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+    color: var(--accent);
+    opacity: 0.5;
+  }
+
+  /* ─── VOICE ─── */
+  .voice-section {
+    padding: 140px 0;
+    background: var(--light-beige);
+  }
+
+  .voice-grid {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+  }
+
+  .voice-card {
+    background: var(--cream);
+    padding: 40px 36px;
+    position: relative;
+  }
+
+  .voice-card::before {
+    content: '"';
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    font-weight: 300;
+    color: var(--beige);
+    line-height: 1;
+  }
+
+  .voice-star {
+    color: var(--soft-red);
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .voice-text {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-dark);
+    line-height: 2.3;
+    margin-bottom: 20px;
+  }
+
+  .voice-meta {
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    font-weight: 300;
+    letter-spacing: 0.4em;
+    color: var(--text-mid);
+    text-transform: uppercase;
+  }
+
+  /* ─── ACCESS ─── */
+  .access-section {
+    padding: 140px 0;
+    background: var(--cream);
+  }
+
+  .access-grid {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .access-dl dt {
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 9px;
+    letter-spacing: 0.5em;
+    color: var(--warm-brown);
+    text-transform: uppercase;
+    margin-top: 28px;
+    margin-bottom: 6px;
+  }
+
+  .access-dl dt:first-child { margin-top: 0; }
+
+  .access-dl dd {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-dark);
+    line-height: 2;
+  }
+
+  .map-wrap {
+    height: 320px;
+    background: var(--beige);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .map-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    padding: 32px 40px;
+    border: 1px solid var(--warm-brown);
+    transition: background 0.3s;
+  }
+
+  .map-link:hover {
+    background: rgba(107,74,56,0.08);
+  }
+
+  .map-link-icon {
+    font-size: 28px;
+  }
+
+  .map-link-text {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--warm-brown);
+    letter-spacing: 0.2em;
+  }
+
+  .map-link-sub {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    color: var(--text-mid);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--dark-brown);
+    padding: 80px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .footer-left {}
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--beige);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-tagline {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--accent);
+    letter-spacing: 0.3em;
+    margin-top: 8px;
+  }
+
+  .footer-right {}
+
+  .footer-btn {
+    display: inline-block;
+    padding: 16px 48px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .footer-btn:hover {
+    background: var(--accent);
+    color: var(--dark-brown);
+  }
+
+  .footer-copy {
+    width: 100%;
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    font-weight: 200;
+    letter-spacing: 0.3em;
+    color: #4A3428;
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid #3D2E24;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { position: relative; height: auto; min-height: 60vh; padding: 60px 32px; }
+    .hero-right { min-height: 50vh; padding: 48px 32px; }
+    .hero-deco { font-size: 80px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .visual-block { height: 240px; }
+    .menu-item { grid-template-columns: 48px 1fr; gap: 20px; padding: 28px 24px; }
+    .menu-item-arrow { display: none; }
+    .voice-grid { grid-template-columns: 1fr; }
+    .access-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; padding: 60px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="brand-en">Femcare &amp; Diet Consultation — Nagoya</p>
+    <h1 class="hero-title">Tiara</h1>
+    <p class="hero-title-jp">ティアラ</p>
+    <p class="hero-concept">
+      女性の体に寄り添う、<br>フェムケアとダイエットの<br>専門サロン。
+    </p>
+    <div class="hero-score">
+      <div class="score-item">
+        <span class="score-num">4.93</span>
+        <span class="score-label">口コミ評価</span>
+      </div>
+      <div class="score-item">
+        <span class="score-num">77</span>
+        <span class="score-label">口コミ件数</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <span class="side-text">Femcare · Diet · Wellness</span>
+    <div class="hero-deco" aria-hidden="true">T</div>
+    <div class="hero-right-bottom">
+      <div class="hero-tags">
+        <span class="tag">フェムケア</span>
+        <span class="tag">デリケートゾーン</span>
+        <span class="tag">ダイエット相談</span>
+        <span class="tag">整体</span>
+      </div>
+      <div class="cta-area">
+        <a class="cta-btn" href="https://beauty.hotpepper.jp/kr/slnH000680760/" target="_blank">ホットペッパーで予約する</a>
+        <span class="cta-note">24h受付</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">About</div>
+    <div class="about-grid reveal">
+      <div>
+        <h2 class="about-heading">女性の体を、<br>内側から整える。</h2>
+        <p class="about-body">
+          Tiaraは、フェムケア（デリケートゾーンケア）とダイエット相談を専門とする女性のためのサロンです。<br><br>
+          デリケートな悩みを丁寧にヒアリングし、一人ひとりに合った施術とアドバイスを提供。<br><br>
+          ダイエット相談では、無理なく続けられるメソッドで理想の体へ導きます。金山駅から徒歩7分、アクセスしやすい場所でお待ちしています。
+        </p>
+      </div>
+      <div class="visual-block reveal">
+        <div class="vb-main">
+          <span class="vb-main-label">for women</span>
+        </div>
+        <div class="vb-bottom">
+          <div class="vb-sub1"></div>
+          <div class="vb-sub2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Menu</div>
+    <div class="menu-list reveal">
+      <div class="menu-item">
+        <div class="menu-item-num">01</div>
+        <div class="menu-item-info">
+          <div class="menu-item-name">フェムケア・デリケートゾーンケア</div>
+          <div class="menu-item-desc">デリケートゾーンのお悩みに専門的なアプローチ。黒ずみ・乾燥・ニオイなど、プロの施術で改善へ導きます。</div>
+        </div>
+        <div class="menu-item-arrow">→</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-num">02</div>
+        <div class="menu-item-info">
+          <div class="menu-item-name">ダイエット相談・痩身</div>
+          <div class="menu-item-desc">体質・生活習慣をヒアリングし、その人に合ったダイエットプランをご提案。無理なく結果を出します。</div>
+        </div>
+        <div class="menu-item-arrow">→</div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-num">03</div>
+        <div class="menu-item-info">
+          <div class="menu-item-name">整体・ボディケア</div>
+          <div class="menu-item-desc">骨格のゆがみを整え、体の不調を根本からアプローチ。姿勢改善・肩こり・腰痛でお悩みの方に。</div>
+        </div>
+        <div class="menu-item-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section class="voice-section">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Voice</div>
+    <div class="voice-grid reveal">
+      <div class="voice-card">
+        <div class="voice-star">★★★★★</div>
+        <p class="voice-text">デリケートな悩みを話しやすい雰囲気で親身に聞いてくれました。施術後の変化に驚いています。</p>
+        <p class="voice-meta">30代 女性</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-star">★★★★★</div>
+        <p class="voice-text">ダイエット相談で食事のアドバイスもいただけて、無理なく体重が落ちてきました。続けて通っています。</p>
+        <p class="voice-meta">40代 女性</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-star">★★★★★</div>
+        <p class="voice-text">女性専門のサロンなので話しやすいです。悩みを的確に解決していただき、大満足です。</p>
+        <p class="voice-meta">20代 女性</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-star">★★★★★</div>
+        <p class="voice-text">整体とフェムケアを組み合わせて受けています。体全体のバランスが整ってきた気がします。</p>
+        <p class="voice-meta">30代 女性</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="access-section">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Access</div>
+    <div class="access-grid reveal">
+      <dl class="access-dl">
+        <dt>Salon Name</dt>
+        <dd>フェムケアデリケートゾーン・ダイエット相談室 Tiara（ティアラ）</dd>
+        <dt>Address</dt>
+        <dd>愛知県名古屋市中区正木４丁目１０－１９－３<br>第１６金山フクマルビル５０１</dd>
+        <dt>Access</dt>
+        <dd>金山駅より徒歩7分</dd>
+        <dt>Reservation</dt>
+        <dd>ホットペッパービューティーより24時間受付</dd>
+      </dl>
+      <div class="map-wrap">
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=愛知県名古屋市中区正木4丁目10-19-3+第16金山フクマルビル" target="_blank">
+          <span class="map-link-icon">📍</span>
+          <span class="map-link-text">Google マップで開く</span>
+          <span class="map-link-sub">愛知県名古屋市中区正木4丁目10-19-3</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <div class="footer-logo">Tiara</div>
+    <div class="footer-tagline">フェムケア・ダイエット相談室｜名古屋・金山</div>
+  </div>
+  <div class="footer-right">
+    <a class="footer-btn" href="https://beauty.hotpepper.jp/kr/slnH000680760/" target="_blank">ご予約はこちら</a>
+  </div>
+  <p class="footer-copy">© Tiara. All rights reserved.</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 120);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
